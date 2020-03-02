@@ -14,6 +14,8 @@
 		454ABA10240D78EF00569770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454ABA0F240D78EF00569770 /* Assets.xcassets */; };
 		454ABA13240D78EF00569770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454ABA11240D78EF00569770 /* LaunchScreen.storyboard */; };
 		454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1A240D849900569770 /* RegisterViewController.swift */; };
+		454ABA1E240D8B8100569770 /* PlantListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */; };
+		454ABA20240D8BC800569770 /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		454ABA12240D78EF00569770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		454ABA14240D78EF00569770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		454ABA1A240D849900569770 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListTableViewController.swift; sourceTree = "<group>"; };
+		454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,26 @@
 		454ABA05240D78EC00569770 /* WaterMyPlants-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				454ABA1C240D8B6000569770 /* View Controllers */,
 				454ABA06240D78EC00569770 /* AppDelegate.swift */,
 				454ABA08240D78EC00569770 /* SceneDelegate.swift */,
-				454ABA1A240D849900569770 /* RegisterViewController.swift */,
-				454ABA0A240D78EC00569770 /* LoginViewController.swift */,
 				454ABA0C240D78EC00569770 /* Main.storyboard */,
 				454ABA0F240D78EF00569770 /* Assets.xcassets */,
 				454ABA11240D78EF00569770 /* LaunchScreen.storyboard */,
 				454ABA14240D78EF00569770 /* Info.plist */,
 			);
 			path = "WaterMyPlants-iOS";
+			sourceTree = "<group>";
+		};
+		454ABA1C240D8B6000569770 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */,
+				454ABA0A240D78EC00569770 /* LoginViewController.swift */,
+				454ABA1A240D849900569770 /* RegisterViewController.swift */,
+				454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				454ABA0B240D78EC00569770 /* LoginViewController.swift in Sources */,
+				454ABA20240D8BC800569770 /* PlantTableViewCell.swift in Sources */,
+				454ABA1E240D8B8100569770 /* PlantListTableViewController.swift in Sources */,
 				454ABA07240D78EC00569770 /* AppDelegate.swift in Sources */,
 				454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */,
 				454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */,

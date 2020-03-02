@@ -142,16 +142,16 @@
             </objects>
             <point key="canvasLocation" x="136" y="78"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Plant List Table View Controller-->
         <scene sceneID="yBB-9c-dCQ">
             <objects>
-                <tableViewController id="rnn-C0-vbS" sceneMemberID="viewController">
+                <tableViewController id="rnn-C0-vbS" customClass="PlantListTableViewController" customModule="WaterMyPlants_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EYa-0w-39v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="113" id="l9S-WC-k24">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="113" id="l9S-WC-k24" customClass="PlantTableViewCell" customModule="WaterMyPlants_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l9S-WC-k24" id="BA9-Vr-NXb">
@@ -228,6 +228,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39V-Gq-ISy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1011.5942028985507" y="77.678571428571431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="baM-Dg-1Pc">
+            <objects>
+                <viewController id="ntS-Ie-f1T" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LXt-Zd-HEe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rose-2" translatesAutoresizingMaskIntoConstraints="NO" id="NuX-FV-QOp">
+                                <rect key="frame" x="0.0" y="0.0" width="414.00000000000045" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="JMr-DU-clo"/>
+                                    <constraint firstAttribute="height" constant="326" id="wgk-ME-A23"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.viewfinder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9oj-ZK-4H8">
+                                <rect key="frame" x="87" y="99" width="240" height="128"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="d73-kd-NoQ"/>
+                                    <constraint firstAttribute="height" constant="130.5" id="vHN-cr-rlc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5b-Xr-sjO">
+                                <rect key="frame" x="20" y="438" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NuX-FV-QOp" firstAttribute="trailing" secondItem="WdU-mt-sDG" secondAttribute="trailing" id="Ahd-aW-egP"/>
+                            <constraint firstItem="NuX-FV-QOp" firstAttribute="leading" secondItem="WdU-mt-sDG" secondAttribute="leading" id="Gsj-Oo-JB7"/>
+                            <constraint firstItem="9oj-ZK-4H8" firstAttribute="leading" secondItem="WdU-mt-sDG" secondAttribute="leading" constant="87" id="c4z-HK-IV1"/>
+                            <constraint firstItem="WdU-mt-sDG" firstAttribute="trailing" secondItem="9oj-ZK-4H8" secondAttribute="trailing" constant="87" id="jbZ-Iv-9HV"/>
+                            <constraint firstItem="9oj-ZK-4H8" firstAttribute="top" secondItem="WdU-mt-sDG" secondAttribute="top" constant="54" id="r39-FL-72s"/>
+                            <constraint firstItem="NuX-FV-QOp" firstAttribute="top" secondItem="LXt-Zd-HEe" secondAttribute="top" id="ryp-87-KfH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WdU-mt-sDG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Wr-F6-9Cz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828.985507246377" y="78.348214285714278"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Uea-2j-fbq">
@@ -367,12 +414,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAi-gw-N4k" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="-660"/>
+            <point key="canvasLocation" x="928" y="-660"/>
         </scene>
     </scenes>
     <resources>
         <image name="6c6a486c-5c68-4bae-b6fe-999ea47a6857_200x200" width="200" height="200"/>
         <image name="Rose-2" width="1629" height="1086"/>
         <image name="WaterPlantLogIn" width="900" height="1600"/>
+        <image name="camera.viewfinder" catalog="system" width="64" height="56"/>
     </resources>
 </document>
