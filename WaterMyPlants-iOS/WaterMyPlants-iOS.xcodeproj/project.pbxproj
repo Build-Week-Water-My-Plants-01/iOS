@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4772A0240DABD000D48A07 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47729F240DABD000D48A07 /* PlantDetailViewController.swift */; };
+		2C4772A2240DBA9300D48A07 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4772A1240DBA9300D48A07 /* ProfileViewController.swift */; };
 		454ABA07240D78EC00569770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA06240D78EC00569770 /* AppDelegate.swift */; };
 		454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA08240D78EC00569770 /* SceneDelegate.swift */; };
 		454ABA0B240D78EC00569770 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA0A240D78EC00569770 /* LoginViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C47729F240DABD000D48A07 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
+		2C4772A1240DBA9300D48A07 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		454ABA03240D78EC00569770 /* WaterMyPlants-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WaterMyPlants-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		454ABA06240D78EC00569770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		454ABA08240D78EC00569770 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				454ABA0A240D78EC00569770 /* LoginViewController.swift */,
 				454ABA1A240D849900569770 /* RegisterViewController.swift */,
 				454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */,
+				2C47729F240DABD000D48A07 /* PlantDetailViewController.swift */,
+				2C4772A1240DBA9300D48A07 /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -161,6 +167,8 @@
 				454ABA07240D78EC00569770 /* AppDelegate.swift in Sources */,
 				454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */,
 				454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */,
+				2C4772A2240DBA9300D48A07 /* ProfileViewController.swift in Sources */,
+				2C4772A0240DABD000D48A07 /* PlantDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
