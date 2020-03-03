@@ -11,7 +11,7 @@ import CoreData
 
 let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
 
-class loginController {
+class UserController {
         
         //MARK: - Properties
         var bearer: Bearer?
