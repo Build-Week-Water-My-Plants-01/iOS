@@ -24,7 +24,9 @@
 		454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1A240D849900569770 /* RegisterViewController.swift */; };
 		454ABA1E240D8B8100569770 /* PlantListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */; };
 		454ABA20240D8BC800569770 /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */; };
-		833282D2240DF5C800C2EC64 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D1240DF5C800C2EC64 /* APIController.swift */; };
+		833282D2240DF5C800C2EC64 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D1240DF5C800C2EC64 /* PlantController.swift */; };
+		833282D5240EEEF700C2EC64 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D4240EEEF700C2EC64 /* UserController.swift */; };
+		833282D8240EF10600C2EC64 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D7240EF10600C2EC64 /* Bearer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +49,9 @@
 		454ABA1A240D849900569770 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListTableViewController.swift; sourceTree = "<group>"; };
 		454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
-		833282D1240DF5C800C2EC64 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		833282D1240DF5C800C2EC64 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
+		833282D4240EEEF700C2EC64 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		833282D7240EF10600C2EC64 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		454ABA05240D78EC00569770 /* WaterMyPlants-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				833282D6240EF0F000C2EC64 /* Model */,
 				2CA20DDF240EC93A004496F1 /* Core Data */,
 				833282D0240DF5BA00C2EC64 /* Controllers */,
 				454ABA1C240D8B6000569770 /* View Controllers */,
@@ -122,9 +127,18 @@
 		833282D0240DF5BA00C2EC64 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				833282D1240DF5C800C2EC64 /* APIController.swift */,
+				833282D1240DF5C800C2EC64 /* PlantController.swift */,
+				833282D4240EEEF700C2EC64 /* UserController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		833282D6240EF0F000C2EC64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				833282D7240EF10600C2EC64 /* Bearer.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,13 +214,15 @@
 			files = (
 				2CA20DEC240ECE56004496F1 /* Plant+Convenience.swift in Sources */,
 				454ABA0B240D78EC00569770 /* LoginViewController.swift in Sources */,
+				833282D5240EEEF700C2EC64 /* UserController.swift in Sources */,
 				2CA20DE8240ECC7D004496F1 /* UserRepresentation.swift in Sources */,
-				833282D2240DF5C800C2EC64 /* APIController.swift in Sources */,
+				833282D2240DF5C800C2EC64 /* PlantController.swift in Sources */,
 				454ABA20240D8BC800569770 /* PlantTableViewCell.swift in Sources */,
 				2CA20DEA240ECCC2004496F1 /* PlantRepresentation.swift in Sources */,
 				2CA20DE4240ECA87004496F1 /* Users.xcdatamodeld in Sources */,
 				454ABA1E240D8B8100569770 /* PlantListTableViewController.swift in Sources */,
 				454ABA07240D78EC00569770 /* AppDelegate.swift in Sources */,
+				833282D8240EF10600C2EC64 /* Bearer.swift in Sources */,
 				2CA20DE1240EC958004496F1 /* CoreDataStack.swift in Sources */,
 				454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */,
 				2CA20DE6240ECB93004496F1 /* User+Convenience.swift in Sources */,
