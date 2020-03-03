@@ -34,69 +34,79 @@ class PlantController {
 
     typealias CompletionHandler = (Error?) -> Void
 
-    init() {
-    fetchPlantsFromServer()
-    }
-
     
     //MARK: - Server API Methods
     
-  func fetchPlantsFromServer(completion: @escaping ((Error?) -> Void) = { _ in }) {
-       
-       let requestURL = baseURL.appendingPathExtension("json")
-       
-       URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+
+    func fetchPlantsFromServer(completion: @escaping(Result<[String], NetworkError>)-> Void){
            
-           if let error = error {
-               NSLog("Error fetching plants from server: \(error)")
-               completion(error)
-               return
-           }
+           //           guard let bearer = bearer else {
+           //               completion(.failure(.noToken))
+           //               return
+           //           }
            
-           guard let data = data else {
-               NSLog("No data returned from data task")
-               completion(NSError())
-               return
-           }
+        let requestURL = baseURL.appendingPathComponent("api/users").appendingPathComponent("plants")
            
-           var plantRepresentations: [PlantRepresentation] = []
+           var request = URLRequest(url: requestURL)
+           request.httpMethod = HTTPMethod.get.rawValue
            
-           do {
-               plantRepresentations = try JSONDecoder().decode([String: PlantRepresentation].self, from: data).map({$0.value})
-//               self.updatePlants(with: plantRepresentations)
-           } catch {
-               NSLog("Error decoding JSON data: \(error)")
-               completion(error)
-               return
-           }
+           //           request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authoriaztion.rawValue)
            
-           completion(nil)
+           URLSession.shared.dataTask(with: request) { (data, response, error) in
+               
+               if let error = error {
+                   NSLog("Error: \(error)")
+                completion(.failure(.dataError))
+                   return
+               }
+               
+               if let response = response as? HTTPURLResponse,
+                   response.statusCode != 200 {
+                completion(.failure(.badURL))
+                   return
+               }
+               
+               guard let data = data else {
+                completion(.failure(.dataError))
+                   return
+               }
+               
+               let decoder = JSONDecoder()
+               
+               do {
+                   
+                   let plants = try decoder.decode([String].self, from: data)
+                   completion(.success(plants))
+               } catch {
+                   NSLog("Error decoding DevLibs: \(error)")
+                completion(.failure(.decodeError))
+                   return
+               }
+               
            }.resume()
-       
-   }
+       }
+    
+    
         //MARK: TODO - Representation implementation + CoreData for Plant And User
     func putPlant(plant: Plant, completion: @escaping ()-> Void = { }) {
           
           //Core Data needed
           
-          let identifier = String(devLib.id)
-          
-          let requestURL = baseUrl
-              .appendingPathComponent(identifier)
+                let requestURL = baseURL
               .appendingPathExtension("json")
           
           var request = URLRequest(url: requestURL)
           request.httpMethod = HTTPMethod.put.rawValue
           
           //Conv. Init needed
-          guard let libRepresentation = devLib.devLibRepresentation else {
-              NSLog("Lib Representation is nil")
+        guard let plantRepresentation = plant.plantRepresentation else {
+              NSLog("Plant Representation is nil")
               completion()
               return
           }
           
           do {
-              request.httpBody = try JSONEncoder().encode(libRepresentation)
+              request.httpBody = try JSONEncoder().encode(plantRepresentation)
           } catch {
               NSLog("Error encoding entry representation: \(error)")
               completion()
@@ -116,21 +126,15 @@ class PlantController {
           
           
         
-         func deleteDevLibFromServer(_ devLib: DevLib, completion: @escaping()-> Void = {}) {
+         func deletePlantFromServer(_ plant: Plant, completion: @escaping()-> Void = {}) {
                 
-                let identifier = String(devLib.id)
+                let identifier = String(7)
                 
-                let requestURL = baseUrl.appendingPathComponent(identifier).appendingPathExtension("json")
+                let requestURL = baseURL.appendingPathComponent(identifier).appendingPathExtension("json")
                 
                 var request = URLRequest(url: requestURL)
                 request.httpMethod = HTTPMethod.delete.rawValue
-                
-        //        guard let libRepresentation = devLib.devLibRepresentation else {
-        //            NSLog("Entry Representation is nil")
-        //            completion()
-        //            return
-        //        }
-                
+            
                 URLSession.shared.dataTask(with: request) { (data, _, error) in
                     if let error = error {
                         NSLog("Error deleting Task from server: \(error)")
@@ -144,16 +148,7 @@ class PlantController {
             }
         
         
-          
-      }
-    
-//    func putPlantToServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
-//
-//    }
-//
-//    func deletePlantFromServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
-//
-//    }
+      
 
     //MARK: CRUD
     
@@ -178,11 +173,12 @@ class PlantController {
      }
      
      func delete(plant: Plant){
-        // deletePlantFromServer(plant)
+         deletePlantFromServer(plant)
          CoreDataStack.shared.mainContext.delete(plant)
          CoreDataStack.shared.save()
      }
      
      
     
+}
 }
