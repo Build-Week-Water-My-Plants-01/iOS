@@ -16,7 +16,7 @@ class APIController {
     //MARK: - Properties
 
     let baseURL = URL(string: "")
-    var bearer: Bearer?
+//    var bearer: Bearer?
 
     enum HTTPMethod: String {
         case get = "GET"
