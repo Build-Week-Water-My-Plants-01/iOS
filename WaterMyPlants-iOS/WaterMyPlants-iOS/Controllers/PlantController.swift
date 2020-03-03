@@ -115,6 +115,35 @@ class PlantController {
           }.resume()
           
           
+        
+         func deleteDevLibFromServer(_ devLib: DevLib, completion: @escaping()-> Void = {}) {
+                
+                let identifier = String(devLib.id)
+                
+                let requestURL = baseUrl.appendingPathComponent(identifier).appendingPathExtension("json")
+                
+                var request = URLRequest(url: requestURL)
+                request.httpMethod = HTTPMethod.delete.rawValue
+                
+        //        guard let libRepresentation = devLib.devLibRepresentation else {
+        //            NSLog("Entry Representation is nil")
+        //            completion()
+        //            return
+        //        }
+                
+                URLSession.shared.dataTask(with: request) { (data, _, error) in
+                    if let error = error {
+                        NSLog("Error deleting Task from server: \(error)")
+                        completion()
+                        return
+                    }
+                    
+                    completion()
+                }.resume()
+                
+            }
+        
+        
           
       }
     
@@ -128,27 +157,30 @@ class PlantController {
 
     //MARK: CRUD
     
-    func createPlant(lib: String, context: NSManagedObjectContext) {
-         let devLib = DevLib(lib: lib, context: context)
-         putLib(devLib: devLib)
-         CoreDataStack.share.save()
+    func createPlant(frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext) {
+         let plant = Plant(nickname: nickname, speciesName: speciesName, image: image, frequency: frequency, context: context)
+        
+         putPlant(plant: plant)
+         CoreDataStack.shared.save()
          
          
      }
      
-     func updatePlant(devLib: DevLib, lib: String, id: Int32, categoryID: Int32){
-         devLib.id = id
-         devLib.lib = lib
-         devLib.categoryID = categoryID
+    func updatePlant(plant: Plant, frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext){
+        plant.frequency = frequency
+        plant.image = image
+        plant.speciesName = speciesName
+        plant.nickname = nickname
+        
          
-         CoreDataStack.share.save()
-         putLib(devLib: devLib)
+         CoreDataStack.shared.save()
+         putPlant(plant: plant)
      }
      
-     func delete(devLib: DevLib){
-         deleteDevLibFromServer(devLib)
-         CoreDataStack.share.mainContext.delete(devLib)
-         CoreDataStack.share.save()
+     func delete(plant: Plant){
+        // deletePlantFromServer(plant)
+         CoreDataStack.shared.mainContext.delete(plant)
+         CoreDataStack.shared.save()
      }
      
      

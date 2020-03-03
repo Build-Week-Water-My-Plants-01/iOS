@@ -16,20 +16,18 @@ extension Plant {
             let image = image,
             let frequency = frequency else { return nil }
         
-        return PlantRepresentation(nickname: nickname, speciesName: speciesName, id: id, image: image, frequency: frequency)
+        return PlantRepresentation(nickname: nickname, speciesName: speciesName, image: image, frequency: frequency)
     }
     
     @discardableResult convenience init(nickname: String,
                                         speciesName: String,
                                         image: String,
-                                        id: Int16,
                                         frequency: String,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.nickname = nickname
         self.speciesName = speciesName
         self.image = image
-        self.id = id
         self.frequency = frequency
     }
     
@@ -40,7 +38,6 @@ extension Plant {
         self.init(nickname: plantRepresentation.nickname,
                   speciesName: plantRepresentation.speciesName,
                   image: image,
-                  id: plantRepresentation.id,
                   frequency: plantRepresentation.frequency,
                   context: context)
     }
