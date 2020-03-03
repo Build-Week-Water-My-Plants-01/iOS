@@ -9,17 +9,30 @@
 import Foundation
 import CoreData
 
-//MARK: - Properties
 
-class PlantController {
+
+class APIController {
+    
+    //MARK: - Properties
 
     let baseURL = URL(string: "")
+    var bearer: Bearer?
 
     enum HTTPMethod: String {
         case get = "GET"
         case put = "PUT"
         case post = "POST"
         case delete = "DELETE"
+    }
+    
+    enum NetworkError: Error {
+        case badImageEncoding
+        case badURL
+        case noToken
+        case badToken
+        case unknownNetworkError
+        case dataError
+        case decodeError
     }
 
     typealias CompletionHandler = (Error?) -> Void
@@ -34,7 +47,7 @@ class PlantController {
     func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
         //MARK: TODO
     }
-    //MARK: TODO - Plant Representation implementation
+        //MARK: TODO - Representation implementation + CoreData for Plant And User
 //    func updatePlantToServer(with representations: [PlantRepresentation]) throws {
 //
 //    }
