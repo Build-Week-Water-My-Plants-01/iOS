@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2C4772A0240DABD000D48A07 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47729F240DABD000D48A07 /* PlantDetailViewController.swift */; };
 		2C4772A2240DBA9300D48A07 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4772A1240DBA9300D48A07 /* ProfileViewController.swift */; };
+		2CA20DE1240EC958004496F1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DE0240EC958004496F1 /* CoreDataStack.swift */; };
+		2CA20DE4240ECA87004496F1 /* Users.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DE2240ECA87004496F1 /* Users.xcdatamodeld */; };
+		2CA20DE6240ECB93004496F1 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DE5240ECB93004496F1 /* User+Convenience.swift */; };
+		2CA20DE8240ECC7D004496F1 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DE7240ECC7D004496F1 /* UserRepresentation.swift */; };
+		2CA20DEA240ECCC2004496F1 /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DE9240ECCC2004496F1 /* PlantRepresentation.swift */; };
+		2CA20DEC240ECE56004496F1 /* Plant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DEB240ECE56004496F1 /* Plant+Convenience.swift */; };
 		454ABA07240D78EC00569770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA06240D78EC00569770 /* AppDelegate.swift */; };
 		454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA08240D78EC00569770 /* SceneDelegate.swift */; };
 		454ABA0B240D78EC00569770 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA0A240D78EC00569770 /* LoginViewController.swift */; };
@@ -24,6 +30,12 @@
 /* Begin PBXFileReference section */
 		2C47729F240DABD000D48A07 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		2C4772A1240DBA9300D48A07 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2CA20DE0240EC958004496F1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		2CA20DE3240ECA87004496F1 /* Users.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Users.xcdatamodel; sourceTree = "<group>"; };
+		2CA20DE5240ECB93004496F1 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		2CA20DE7240ECC7D004496F1 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
+		2CA20DE9240ECCC2004496F1 /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
+		2CA20DEB240ECE56004496F1 /* Plant+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+Convenience.swift"; sourceTree = "<group>"; };
 		454ABA03240D78EC00569770 /* WaterMyPlants-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WaterMyPlants-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		454ABA06240D78EC00569770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		454ABA08240D78EC00569770 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +61,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CA20DDF240EC93A004496F1 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2CA20DE0240EC958004496F1 /* CoreDataStack.swift */,
+				2CA20DE2240ECA87004496F1 /* Users.xcdatamodeld */,
+				2CA20DE5240ECB93004496F1 /* User+Convenience.swift */,
+				2CA20DEB240ECE56004496F1 /* Plant+Convenience.swift */,
+				2CA20DE7240ECC7D004496F1 /* UserRepresentation.swift */,
+				2CA20DE9240ECCC2004496F1 /* PlantRepresentation.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		454AB9FA240D78EC00569770 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +93,7 @@
 		454ABA05240D78EC00569770 /* WaterMyPlants-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2CA20DDF240EC93A004496F1 /* Core Data */,
 				833282D0240DF5BA00C2EC64 /* Controllers */,
 				454ABA1C240D8B6000569770 /* View Controllers */,
 				454ABA06240D78EC00569770 /* AppDelegate.swift */,
@@ -172,12 +198,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA20DEC240ECE56004496F1 /* Plant+Convenience.swift in Sources */,
 				454ABA0B240D78EC00569770 /* LoginViewController.swift in Sources */,
+				2CA20DE8240ECC7D004496F1 /* UserRepresentation.swift in Sources */,
 				833282D2240DF5C800C2EC64 /* APIController.swift in Sources */,
 				454ABA20240D8BC800569770 /* PlantTableViewCell.swift in Sources */,
+				2CA20DEA240ECCC2004496F1 /* PlantRepresentation.swift in Sources */,
+				2CA20DE4240ECA87004496F1 /* Users.xcdatamodeld in Sources */,
 				454ABA1E240D8B8100569770 /* PlantListTableViewController.swift in Sources */,
 				454ABA07240D78EC00569770 /* AppDelegate.swift in Sources */,
+				2CA20DE1240EC958004496F1 /* CoreDataStack.swift in Sources */,
 				454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */,
+				2CA20DE6240ECB93004496F1 /* User+Convenience.swift in Sources */,
 				454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */,
 				2C4772A2240DBA9300D48A07 /* ProfileViewController.swift in Sources */,
 				2C4772A0240DABD000D48A07 /* PlantDetailViewController.swift in Sources */,
@@ -376,6 +408,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2CA20DE2240ECA87004496F1 /* Users.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2CA20DE3240ECA87004496F1 /* Users.xcdatamodel */,
+			);
+			currentVersion = 2CA20DE3240ECA87004496F1 /* Users.xcdatamodel */;
+			path = Users.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 454AB9FB240D78EC00569770 /* Project object */;
 }
