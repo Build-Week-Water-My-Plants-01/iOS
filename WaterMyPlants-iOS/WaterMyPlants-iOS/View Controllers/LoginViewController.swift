@@ -11,26 +11,61 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let userController = UserController()
+    var isLogin: Bool = true
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+   
     
+    @IBOutlet weak var buttonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        buttonOutlet.layer.cornerRadius = 20
     }
     
     
     @IBAction func loginButton(_ sender: Any) {
+        guard let username = usernameTextField.text,
+                let password = passwordTextField.text,
+                !username.isEmpty,
+                !password.isEmpty else{return}
+            
+            let user = UserRepresentation(username: username, password: password, phoneNumber: " ")
+            
+            
+            
+            if isLogin == true {
+                signIn(with: user)
+            } else {
+                print("Error signing up")
+            }
         
     }
     
-    @IBAction func registerButton(_ sender: Any) {
+
+    
+    
+    
+    //MARK: Method SignUp + Sign In
+    
+    func signIn(with user: UserRepresentation){
+        userController.signIn(with: user, completion: { (error, _)  in
+            
+            if let error = error {
+                NSLog("Error: \(error)")
+                
+                
+            } else {
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(true, forKey: "LoggedIn")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        })
     }
-    
-    
-    
     
     
 }

@@ -2,8 +2,68 @@
 //  RegisterViewController.swift
 //  WaterMyPlants-iOS
 //
-//  Created by Austin Potts on 3/2/20.
+//  Created by Austin Potts on 3/3/20.
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class RegisterViewController: UIViewController {
+
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var userController: UserController?
+    var isLogin: Bool = false
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func registerButtonTapped(_ sender: Any) {
+         guard let username = usernameTextField.text,
+                    let password = passwordTextField.text,
+                    let number = phoneNumberTextField.text,
+                    !username.isEmpty,
+                    !password.isEmpty else{return}
+                
+                let user = UserRepresentation(username: username, password: password, phoneNumber: number)
+                
+                
+                
+                if isLogin != true {
+                    signUpUser(with: user)
+                } else {
+                    print("error sign up")
+                }
+        
+    }
+    
+    
+    
+    func signUpUser(with user: UserRepresentation) {
+           userController?.signUp(with: user, completion: { (error) in
+       
+               if let error = error{
+                   NSLog("Error signing up \(error)")
+               }
+               
+           })
+           
+       }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

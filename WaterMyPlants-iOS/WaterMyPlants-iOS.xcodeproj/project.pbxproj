@@ -21,9 +21,9 @@
 		454ABA0E240D78EC00569770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454ABA0C240D78EC00569770 /* Main.storyboard */; };
 		454ABA10240D78EF00569770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454ABA0F240D78EF00569770 /* Assets.xcassets */; };
 		454ABA13240D78EF00569770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454ABA11240D78EF00569770 /* LaunchScreen.storyboard */; };
-		454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1A240D849900569770 /* RegisterViewController.swift */; };
 		454ABA1E240D8B8100569770 /* PlantListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */; };
 		454ABA20240D8BC800569770 /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */; };
+		454ABA22240F1DAB00569770 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ABA21240F1DAB00569770 /* RegisterViewController.swift */; };
 		833282D2240DF5C800C2EC64 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D1240DF5C800C2EC64 /* PlantController.swift */; };
 		833282D5240EEEF700C2EC64 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D4240EEEF700C2EC64 /* UserController.swift */; };
 		833282D8240EF10600C2EC64 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833282D7240EF10600C2EC64 /* Bearer.swift */; };
@@ -46,9 +46,9 @@
 		454ABA0F240D78EF00569770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		454ABA12240D78EF00569770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		454ABA14240D78EF00569770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		454ABA1A240D849900569770 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListTableViewController.swift; sourceTree = "<group>"; };
 		454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
+		454ABA21240F1DAB00569770 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		833282D1240DF5C800C2EC64 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
 		833282D4240EEEF700C2EC64 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		833282D7240EF10600C2EC64 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
@@ -116,10 +116,10 @@
 			children = (
 				454ABA1D240D8B8100569770 /* PlantListTableViewController.swift */,
 				454ABA0A240D78EC00569770 /* LoginViewController.swift */,
-				454ABA1A240D849900569770 /* RegisterViewController.swift */,
 				454ABA1F240D8BC700569770 /* PlantTableViewCell.swift */,
 				2C47729F240DABD000D48A07 /* PlantDetailViewController.swift */,
 				2C4772A1240DBA9300D48A07 /* ProfileViewController.swift */,
+				454ABA21240F1DAB00569770 /* RegisterViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -225,8 +225,8 @@
 				833282D8240EF10600C2EC64 /* Bearer.swift in Sources */,
 				2CA20DE1240EC958004496F1 /* CoreDataStack.swift in Sources */,
 				454ABA09240D78EC00569770 /* SceneDelegate.swift in Sources */,
+				454ABA22240F1DAB00569770 /* RegisterViewController.swift in Sources */,
 				2CA20DE6240ECB93004496F1 /* User+Convenience.swift in Sources */,
-				454ABA1B240D849900569770 /* RegisterViewController.swift in Sources */,
 				2C4772A2240DBA9300D48A07 /* ProfileViewController.swift in Sources */,
 				2C4772A0240DABD000D48A07 /* PlantDetailViewController.swift in Sources */,
 			);

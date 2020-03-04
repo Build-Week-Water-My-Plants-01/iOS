@@ -18,22 +18,22 @@ struct PlantRepresentation: Codable {
         case nickname
         case speciesName = "species_name"
         case image
-        case frequency = "h20_frequency"
+        case frequency = "h2o_frequency"
     }
     
-    init(from decoder: Decoder) throws {
-        
-        // Set Up the container
-        let container = try decoder.container(keyedBy: PlantKeys.self)
-        
-        speciesName = try container.decode(String.self, forKey: .speciesName)
-        
-        frequency = try container.decode(String.self, forKey: .frequency)
-        
-        nickname = try container.decode(String.self, forKey: .nickname)
-        
-        image = try container.decode(String.self, forKey: .image)
-        
-    }
+//    init(from decoder: Decoder) throws {
+//
+//        // Set Up the container
+//        let container = try decoder.container(keyedBy: PlantKeys.self)
+//
+//        speciesName = try container.decode(String.self, forKey: .speciesName)
+//
+//        frequency = try container.decode(String.self, forKey: .frequency)
+//
+//        nickname = try container.decode(String.self, forKey: .nickname)
+//
+//        image = try container.decode(String.self, forKey: .image)
+//
+//    }
     
 }

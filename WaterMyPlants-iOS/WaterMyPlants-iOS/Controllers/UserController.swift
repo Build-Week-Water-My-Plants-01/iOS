@@ -36,7 +36,7 @@ class UserController {
 
         typealias CompletionHandler = (Error?) -> Void
 
-   private func signUp(with user: UserRepresentation, completion: @escaping(NetworkError?)-> Void){
+    func signUp(with user: UserRepresentation, completion: @escaping(NetworkError?)-> Void){
            
            //Build the URL
         let requestURL = baseURL.appendingPathComponent("api").appendingPathComponent("auth").appendingPathComponent("register")
@@ -81,7 +81,7 @@ class UserController {
        }
     
     
-   private func signIn(with user: UserRepresentation, completion: @escaping(NetworkError?, Bearer?)-> Void){
+    func signIn(with user: UserRepresentation, completion: @escaping(NetworkError?, Bearer?)-> Void){
         
           //Build Url
           let loginURL = baseURL.appendingPathComponent("api")
