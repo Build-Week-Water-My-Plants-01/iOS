@@ -10,6 +10,18 @@ import UIKit
 
 class PlantListTableViewController: UITableViewController {
 
+    let userController = UserController()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        if userController.bearer == nil {
+            performSegue(withIdentifier: "LogInSegue", sender: self)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

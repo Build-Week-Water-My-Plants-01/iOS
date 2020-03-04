@@ -10,5 +10,5 @@ import Foundation
 
 struct Bearer: Codable {
     let token: String
-    let username: String
+   // let username: String
 }

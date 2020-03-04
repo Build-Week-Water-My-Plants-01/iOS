@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
+let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/api/auth/login")!
 
 class UserController {
         
@@ -39,14 +39,15 @@ class UserController {
     func signUp(with user: UserRepresentation, completion: @escaping(NetworkError?)-> Void){
            
            //Build the URL
-        let requestURL = baseURL.appendingPathComponent("api").appendingPathComponent("auth").appendingPathComponent("register")
+        let requestURL = baseURL
+        
         
            //Build the request
            var request = URLRequest(url: requestURL)
            request.httpMethod = HTTPMethod.post.rawValue
            
            //Turn request into JSON
-           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+          request.setValue("application/json", forHTTPHeaderField: "Content-Type")
            
            //Perform the request
            let encoder = JSONEncoder()
@@ -84,9 +85,9 @@ class UserController {
     func signIn(with user: UserRepresentation, completion: @escaping(NetworkError?, Bearer?)-> Void){
         
           //Build Url
-          let loginURL = baseURL.appendingPathComponent("api")
-              .appendingPathComponent("auth")
-              .appendingPathComponent("login")
+          let loginURL = baseURL
+        
+        
           
           //Build request
           var request = URLRequest(url: loginURL)

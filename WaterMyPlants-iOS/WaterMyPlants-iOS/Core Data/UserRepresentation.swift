@@ -9,7 +9,15 @@
 import Foundation
 
 struct UserRepresentation: Codable {
+    
+    enum UserKeys: String, CodingKey  {
+           case username
+           case password
+           case phoneNumber = "phone_number"
+       }
+    
     let username: String
     let password: String
     let phoneNumber: String
+    
 }
