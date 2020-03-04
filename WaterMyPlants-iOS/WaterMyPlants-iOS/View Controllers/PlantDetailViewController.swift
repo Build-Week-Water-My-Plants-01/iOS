@@ -12,6 +12,9 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     // MARK: - Outlets
     
+    let plantController = PlantController()
+    let plant = Plant()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var speciesTextField: UITextField!
@@ -64,7 +67,28 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         view.endEditing(true)
     }
     
-
+    @IBAction func savePlantTapped(_ sender: Any) {
+        guard let name = nameTextField.text,
+            let nickname = nicknameTextField.text,
+            let species = speciesTextField.text,
+            let frequency = frequencyTextField.text,
+            let imager = imager.image else {return}
+        
+        let plant = PlantRepresentation(name: name, nickname: nickname, speciesName: species, image: " ", frequency: frequency)
+        
+        
+            
+           
+        
+    }
+    
+    
+    func createNewPlant(with plant: Plant) {
+        
+        plantController.putPlant(plant: plant)
+        
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -108,7 +132,7 @@ extension PlantDetailViewController {
             }
             
             UIGraphicsBeginImageContextWithOptions(CGSize(width: 227, height: 227), true, 2.0)
-            image.draw(in: CGRect(x: 0, y: 0, width: 299, height: 299))
+            image.draw(in: CGRect(x: 0, y: 0, width: 414, height: 326))
             let newImage = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             

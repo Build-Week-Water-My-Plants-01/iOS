@@ -3,6 +3,7 @@
     <entity name="Plant" representedClassName="Plant" syncable="YES" codeGenerationType="class">
         <attribute name="frequency" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="nickname" attributeType="String"/>
         <attribute name="speciesName" attributeType="String"/>
     </entity>
@@ -12,7 +13,7 @@
         <attribute name="username" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Plant" positionX="18" positionY="90" width="128" height="103"/>
+        <element name="Plant" positionX="18" positionY="90" width="128" height="118"/>
         <element name="User" positionX="-27" positionY="18" width="128" height="88"/>
     </elements>
 </model>

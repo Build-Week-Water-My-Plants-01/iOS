@@ -9,6 +9,8 @@
 import Foundation
 
 struct PlantRepresentation: Codable {
+    
+    let name: String
     let nickname: String
     let speciesName: String
     let image: String?

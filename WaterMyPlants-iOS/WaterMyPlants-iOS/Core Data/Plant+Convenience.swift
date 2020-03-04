@@ -11,20 +11,25 @@ import CoreData
 
 extension Plant {
     var plantRepresentation: PlantRepresentation? {
-        guard let nickname = nickname,
+        
+        guard let name = name,
+            let nickname = nickname,
             let speciesName = speciesName,
             let image = image,
             let frequency = frequency else { return nil }
         
-        return PlantRepresentation(nickname: nickname, speciesName: speciesName, image: image, frequency: frequency)
+        return PlantRepresentation(name: name, nickname: nickname, speciesName: speciesName, image: image, frequency: frequency)
     }
     
-    @discardableResult convenience init(nickname: String,
+    @discardableResult convenience init(name: String,
+                                        nickname: String,
+
                                         speciesName: String,
                                         image: String,
                                         frequency: String,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
+        self.name = name
         self.nickname = nickname
         self.speciesName = speciesName
         self.image = image
@@ -35,8 +40,7 @@ extension Plant {
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         guard let image = plantRepresentation.image else { return nil }
             
-        self.init(nickname: plantRepresentation.nickname,
-                  speciesName: plantRepresentation.speciesName,
+        self.init(name: plantRepresentation.speciesName, nickname: plantRepresentation.name, speciesName: plantRepresentation.nickname,
                   image: image,
                   frequency: plantRepresentation.frequency,
                   context: context)

@@ -156,8 +156,8 @@ class PlantController {
 
     //MARK: CRUD
     
-    func createPlant(frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext) {
-         let plant = Plant(nickname: nickname, speciesName: speciesName, image: image, frequency: frequency, context: context)
+        func createPlant(name: String, frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext) {
+            let plant = Plant(name: name, nickname: nickname, speciesName: speciesName, image: image, frequency: frequency, context: context)
         
          putPlant(plant: plant)
          CoreDataStack.shared.save()
