@@ -15,7 +15,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var userController: UserController?
-    var isLogin: Bool = false
     
     
     override func viewDidLoad() {
@@ -32,23 +31,19 @@ class RegisterViewController: UIViewController {
                     !password.isEmpty else{return}
                 
                 let user = UserRepresentation(username: username, password: password, phoneNumber: number)
-                
-                
-                
-                if isLogin != true {
-                    signUpUser(with: user)
-                } else {
-                    print("error sign up")
-                }
+            
+                signUpUser(with: user)
+               
         
     }
     
     
     
     func signUpUser(with user: UserRepresentation) {
+        
            userController?.signUp(with: user, completion: { (error) in
        
-               if let error = error{
+               if let error = error {
                    NSLog("Error signing up \(error)")
                }
                

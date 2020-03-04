@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlantDetailViewController: UIViewController {
+class PlantDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Outlets
     
@@ -16,6 +16,7 @@ class PlantDetailViewController: UIViewController {
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var speciesTextField: UITextField!
     @IBOutlet weak var frequencyTextField: UITextField!
+    @IBOutlet weak var imager: UIImageView!
     
     // MARK: - Properties
     
@@ -50,10 +51,20 @@ class PlantDetailViewController: UIViewController {
         frequencyTextField.inputView = frequencyPicker
     }
     
+    @IBAction func cameraButtonTapped(_ sender: Any) {
+        let picker = UIImagePickerController()
+                  picker.allowsEditing = false
+                  picker.delegate = self
+                  picker.sourceType = .photoLibrary
+                  present(picker, animated: true)
+    }
+    
+    
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+
     /*
      // MARK: - Navigation
      
@@ -83,4 +94,50 @@ extension PlantDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
         selectedFrequency = frequency[row]
         frequencyTextField.text = selectedFrequency
     }
+}
+
+extension PlantDetailViewController {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true)
+            guard let image = info[.originalImage] as? UIImage else {
+                return
+            }
+            
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: 227, height: 227), true, 2.0)
+            image.draw(in: CGRect(x: 0, y: 0, width: 299, height: 299))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            
+            let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+            var pixelBuffer : CVPixelBuffer?
+            let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(newImage.size.width), Int(newImage.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+            guard (status == kCVReturnSuccess) else {
+                return
+            }
+            
+            CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+            let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+            
+            let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+            let context = CGContext(data: pixelData, width: Int(newImage.size.width), height: Int(newImage.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue) //3
+            
+            context?.translateBy(x: 0, y: newImage.size.height)
+            context?.scaleBy(x: 1.0, y: -1.0)
+            
+            UIGraphicsPushContext(context!)
+            newImage.draw(in: CGRect(x: 0, y: 0, width: newImage.size.width, height: newImage.size.height))
+            UIGraphicsPopContext()
+            CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+            imager.image = newImage
+    
+             
+        }
+    
+    
+    
+    
 }

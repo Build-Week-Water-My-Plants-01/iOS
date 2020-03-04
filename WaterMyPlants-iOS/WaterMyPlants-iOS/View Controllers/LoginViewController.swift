@@ -46,7 +46,9 @@ class LoginViewController: UIViewController {
     }
     
 
-    
+    @IBAction func registerTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "RegisterSegue", sender: self)
+    }
     
     
     //MARK: Method SignUp + Sign In
@@ -67,6 +69,14 @@ class LoginViewController: UIViewController {
         })
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RegisterSegue" {
+            if let registerVC = segue.destination as? RegisterViewController {
+                registerVC.userController = userController
+            }
+        }
+    }
 }
+
+
 

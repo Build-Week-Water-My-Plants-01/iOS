@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/api/auth/login")!
+let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
 
 class UserController {
         
@@ -32,6 +32,7 @@ class UserController {
             case dataError
             case decodeError
             case encodingError
+            case unexpectedStatusCode
         }
 
         typealias CompletionHandler = (Error?) -> Void
@@ -40,7 +41,9 @@ class UserController {
            
            //Build the URL
         let requestURL = baseURL
-        
+            .appendingPathComponent("api")
+            .appendingPathComponent("auth")
+            .appendingPathComponent("register")
         
            //Build the request
            var request = URLRequest(url: requestURL)
@@ -86,9 +89,10 @@ class UserController {
         
           //Build Url
           let loginURL = baseURL
+            .appendingPathComponent("api")
+            .appendingPathComponent("auth")
+            .appendingPathComponent("login")
         
-        
-          
           //Build request
           var request = URLRequest(url: loginURL)
           request.httpMethod = HTTPMethod.post.rawValue
@@ -109,7 +113,8 @@ class UserController {
               
               if let response = response as? HTTPURLResponse,
                   response.statusCode != 200 {
-                completion(.dataError, nil)
+                NSLog("Error code \(response.statusCode)")
+                completion(.unexpectedStatusCode, nil)
                   return
               }
               
