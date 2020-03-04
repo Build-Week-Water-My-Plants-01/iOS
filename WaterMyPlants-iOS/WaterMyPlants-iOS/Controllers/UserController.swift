@@ -9,10 +9,12 @@
 import Foundation
 import CoreData
 
-let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
+
 
 class UserController {
         
+       let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
+    
         //MARK: - Properties
         var bearer: Bearer?
 

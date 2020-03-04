@@ -21,6 +21,8 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var frequencyTextField: UITextField!
     @IBOutlet weak var imager: UIImageView!
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     // MARK: - Properties
     
     let frequency = ["Everyday",
@@ -36,6 +38,9 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         createTapGesture()
         createFrequencyPicker()
+        
+        saveButton.layer.cornerRadius = 20
+        
     }
     
     // MARK: - Tap Gesture Method
@@ -74,11 +79,10 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
             let frequency = frequencyTextField.text,
             let imager = imager.image else {return}
         
-        let plant = PlantRepresentation(name: name, nickname: nickname, speciesName: species, image: " ", frequency: frequency)
+        let plant = Plant(nickname: nickname, speciesName: species, image: "", frequency: frequency)
         
+        createNewPlant(with: plant)
         
-            
-           
         
     }
     

@@ -12,6 +12,8 @@ import CoreData
 
 class PlantController {
     
+    let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
+    
     //MARK: - Properties
 //    var bearer: Bearer?
 
@@ -96,11 +98,12 @@ class PlantController {
           
           //Core Data needed
           
-                let requestURL = baseURL
-              .appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent("api/users/plants").appendingPathExtension("json")
+              
+        
           
           var request = URLRequest(url: requestURL)
-          request.httpMethod = HTTPMethod.put.rawValue
+          request.httpMethod = HTTPMethod.post.rawValue
           
           //Conv. Init needed
         guard let plantRepresentation = plant.plantRepresentation else {
@@ -117,7 +120,14 @@ class PlantController {
               return
           }
           
-          URLSession.shared.dataTask(with: request) { (_, _, error) in
+          URLSession.shared.dataTask(with: request) { (_, response, error) in
+            
+            if let response = response as? HTTPURLResponse,
+                              response.statusCode != 201 {
+                              print(response.statusCode)
+                              completion()
+                              return
+                          }
               
               if let error = error {
                   NSLog("Error PUTting task: \(error)")
@@ -156,8 +166,8 @@ class PlantController {
 
     //MARK: CRUD
     
-        func createPlant(name: String, frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext) {
-            let plant = Plant(name: name, nickname: nickname, speciesName: speciesName, image: image, frequency: frequency, context: context)
+        func createPlant(frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext) {
+            let plant = Plant(nickname: nickname, speciesName: speciesName, image: image, frequency: frequency, context: context)
         
          putPlant(plant: plant)
          CoreDataStack.shared.save()
