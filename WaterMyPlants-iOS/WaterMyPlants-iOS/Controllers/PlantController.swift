@@ -12,6 +12,10 @@ import CoreData
 
 class PlantController {
     
+    init() {
+        fetchPlantsFromServer()
+    }
+    
     static let shared = PlantController()
     
     let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
@@ -46,7 +50,7 @@ class PlantController {
     //MARK: - Server API Methods
     
 
-    func fetchPlantsFromServer(completion: @escaping(Result<[String], NetworkError>)-> Void){
+    func fetchPlantsFromServer(completion: @escaping () -> Void = { }){
            
            //           guard let bearer = bearer else {
            //               completion(.failure(.noToken))
@@ -64,35 +68,91 @@ class PlantController {
                
                if let error = error {
                    NSLog("Error: \(error)")
-                completion(.failure(.dataError))
+                completion()
                    return
                }
                
                if let response = response as? HTTPURLResponse,
                    response.statusCode != 200 {
-                completion(.failure(.badURL))
+                completion()
                    return
                }
                
                guard let data = data else {
-                completion(.failure(.dataError))
+                completion()
                    return
                }
                
                let decoder = JSONDecoder()
                
                do {
-                   
-                   let plants = try decoder.decode([String].self, from: data)
-                   completion(.success(plants))
+                let plants = try decoder.decode([String: PlantRepresentation].self, from: data).map({ $0.value })
+                self.updatePlant(with: plants)
                } catch {
                    NSLog("Error decoding DevLibs: \(error)")
-                completion(.failure(.decodeError))
+                completion()
                    return
                }
-               
+               completion()
            }.resume()
        }
+    
+    func updatePlant(with representations: [PlantRepresentation]){
+        
+        let plantsToFetch = representations.map({ $0.nickname})
+           
+           let representationsByNickname = Dictionary(uniqueKeysWithValues: zip(plantsToFetch, representations))
+           
+           
+           var plantToCreate = representationsByNickname
+           
+           //Adding new Background Context
+           let context = CoreDataStack.shared.container.newBackgroundContext()
+           
+           context.performAndWait {
+               
+           
+           do {
+               
+               
+               let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+               //Only fetch the tasks with identifiers that are in this identifersToFetch array
+               fetchRequest.predicate = NSPredicate(format: "nickname IN %@", plantsToFetch)
+               
+               let exisitingPlant = try context.fetch(fetchRequest)
+               
+               //Update the ones we have
+               for plant in exisitingPlant {
+                   
+                   // Grab the task representation that corresponds to this task
+                   guard let nickname = plant.nickname,
+                       let representation = representationsByNickname[nickname] else { continue }
+                   
+                  plant.nickname = representation.nickname
+                  plant.frequency = representation.h2oFrequency
+                   plant.speciesName = representation.speciesName
+                   
+                   //We just updated a Task, we dont need to create a new Task for this identifier
+                   plantToCreate.removeValue(forKey: nickname)
+               }
+               
+               //Figure out which We dont have
+               for representation in plantToCreate.values {
+                   
+                   Plant(plantRepresentation: representation, context: context)
+                  // Task(taskRepresentation: representation, context: context)
+               }
+               
+               
+               
+               CoreDataStack.shared.save(context: context)
+           } catch {
+               NSLog("Error fetching tasks from persistence store: \(error)")
+               
+           }
+        }
+        
+    }
     
     
         //MARK: TODO - Representation implementation + CoreData for Plant And User
