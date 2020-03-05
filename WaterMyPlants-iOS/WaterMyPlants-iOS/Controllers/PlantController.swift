@@ -96,21 +96,25 @@ class PlantController {
     
     
         //MARK: TODO - Representation implementation + CoreData for Plant And User
-    func putPlant(plant: Plant, completion: @escaping ()-> Void = { }) {
+    func putPlant(plant: Plant, bearer: Bearer, completion: @escaping ()-> Void = { }) {
           
-          //Core Data needed
-        let identifer = UserController.shared.bearer?.id
+       
         
-        let identifierString = "\(String(describing: identifer))"
+        
+          //Core Data needed
+        
+        let identifierString = "\(bearer.id)"
           
-        let requestURL = baseURL.appendingPathComponent("api/users/plants")
+        let requestURL = baseURL.appendingPathComponent("api/users/\(identifierString)/plants")
         
           
           var request = URLRequest(url: requestURL)
           request.httpMethod = HTTPMethod.post.rawValue
         //MARK: - Added 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(UserController.shared.bearer?.token, forHTTPHeaderField: "Authorization")
+        
+        
+        request.addValue(bearer.token, forHTTPHeaderField: "Authorization")
 
           
           //Conv. Init needed
@@ -121,7 +125,11 @@ class PlantController {
           }
           
           do {
-              request.httpBody = try JSONEncoder().encode(plantRepresentation)
+            let jsonEncoder = JSONEncoder()
+            
+            jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+            
+            request.httpBody = try jsonEncoder.encode(plantRepresentation)
           } catch {
               NSLog("Error encoding entry representation: \(error)")
               completion()
@@ -146,8 +154,9 @@ class PlantController {
               completion()
           }.resume()
           
-          
-        
+    }
+    
+    
          func deletePlantFromServer(_ plant: Plant, completion: @escaping()-> Void = {}) {
                 
                 let identifier = String(7)
@@ -177,7 +186,9 @@ class PlantController {
         func createPlant(frequency: String, image: String, nickname: String, speciesName: String,  context: NSManagedObjectContext) {
             let plant = Plant(nickname: nickname, speciesName: speciesName, image: image, frequency: frequency, context: context)
         
-         putPlant(plant: plant)
+            guard let bearer = userController?.bearer else {return}
+            
+         putPlant(plant: plant, bearer: bearer)
          CoreDataStack.shared.save()
          
          
@@ -189,9 +200,10 @@ class PlantController {
         plant.speciesName = speciesName
         plant.nickname = nickname
         
+        guard let bearer = userController?.bearer else {return}
          
          CoreDataStack.shared.save()
-         putPlant(plant: plant)
+         putPlant(plant: plant, bearer: bearer)
      }
      
      func delete(plant: Plant){
@@ -203,4 +215,4 @@ class PlantController {
      
     
 }
-}
+

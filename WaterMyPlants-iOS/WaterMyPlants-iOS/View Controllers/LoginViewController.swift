@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let userController = UserController()
+    var userController: UserController?
     var isLogin: Bool = true
 
     @IBOutlet weak var usernameTextField: UITextField!
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     //MARK: Method SignUp + Sign In
     
     func signIn(with user: UserRepresentation){
-        userController.signIn(with: user, completion: { (error, _)  in
+        userController?.signIn(with: user, completion: { (error, _)  in
             
             if let error = error {
                 NSLog("Error: \(error)")

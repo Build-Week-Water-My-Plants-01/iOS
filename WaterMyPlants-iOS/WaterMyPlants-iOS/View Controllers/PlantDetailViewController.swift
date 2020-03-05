@@ -81,16 +81,22 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         view.endEditing(true)
     }
     
+    
+    
     @IBAction func savePlantTapped(_ sender: Any) {
+        
+        
+        
         guard let name = nameTextField.text,
+            let bearer = usercontroller?.bearer,
             let nickname = nicknameTextField.text,
             let species = speciesTextField.text,
             let frequency = frequencyTextField.text,
             let imager = imager.image else {return}
         
-        let plant = Plant(nickname: nickname, speciesName: species, image: "", frequency: frequency)
+        let plant = Plant(nickname: nickname, speciesName: species, image: nil, frequency: frequency)
         
-        plantController?.putPlant(plant: plant)
+        plantController?.putPlant(plant: plant, bearer: bearer)
         
         
         

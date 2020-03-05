@@ -13,15 +13,15 @@ struct PlantRepresentation: Codable {
  
     let nickname: String
     let speciesName: String
-    let image: String?
-    let frequency: String
+    var image: String?
+    let h2oFrequency: String
     
-    enum PlantKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
      
         case nickname
         case speciesName = "species_name"
         case image
-        case frequency = "h2o_frequency"
+        case h2oFrequency = "h2o_frequency"
     }
     
 //    init(from decoder: Decoder) throws {

@@ -16,6 +16,7 @@ class PlantListTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        plantController.userController = userController
         
         if userController.bearer == nil {
             performSegue(withIdentifier: "LogInSegue", sender: self)
@@ -101,7 +102,12 @@ class PlantListTableViewController: UITableViewController {
                 detailVC.usercontroller = userController
                 detailVC.plantController = plantController
             }
-        }
+            
+        } else if segue.identifier == "LogInSegue" {
+                if let logInDetailVC = segue.destination as? LoginViewController {
+                    logInDetailVC.userController = userController
+                }
+            }
     }
     
     
