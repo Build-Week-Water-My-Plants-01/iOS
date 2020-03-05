@@ -36,10 +36,9 @@ extension Plant {
     
     @discardableResult convenience init?(plantRepresentation: PlantRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let image = plantRepresentation.image else { return nil }
             
         self.init(nickname: plantRepresentation.nickname, speciesName: plantRepresentation.speciesName,
-                  image: image,
+                  image: plantRepresentation.image,
                   frequency: plantRepresentation.h2oFrequency,
                   context: context)
     }

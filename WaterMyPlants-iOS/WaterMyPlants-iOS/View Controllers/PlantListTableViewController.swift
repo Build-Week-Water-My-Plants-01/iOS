@@ -62,6 +62,7 @@ class PlantListTableViewController: UITableViewController {
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
+    
         
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -83,6 +84,15 @@ class PlantListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
+        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+       // fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
+        
+        let context = CoreDataStack.shared.mainContext
+        
+        let results = try? context.fetch(fetchRequest)
+        
+        print(results)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,9 +100,11 @@ class PlantListTableViewController: UITableViewController {
         
         plantController.userController = userController
         
-        if userController.bearer == nil {
-            performSegue(withIdentifier: "LogInSegue", sender: self)
-        }
+         if let bearer = userController.bearer {
+            plantController.fetchPlantsFromServer(bearer: bearer)
+         } else  {
+             performSegue(withIdentifier: "LogInSegue", sender: self)
+         }
         
     }
     

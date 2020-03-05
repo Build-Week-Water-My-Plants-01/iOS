@@ -63,6 +63,7 @@ class UserController {
            let encoder = JSONEncoder()
            
            do {
+            encoder.keyEncodingStrategy = .convertToSnakeCase
                let userJSON = try encoder.encode(user)
                request.httpBody = userJSON
            } catch {

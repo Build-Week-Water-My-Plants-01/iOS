@@ -11,14 +11,8 @@ import CoreData
 
 
 class PlantController {
+        
     
-    var bearer: Bearer?
-    
-    init() {
-        guard let bearer = userController?.bearer else {return}
-        self.bearer = bearer
-        fetchPlantsFromServer(bearer: bearer)
-    }
     
     static let shared = PlantController()
     
@@ -68,7 +62,7 @@ class PlantController {
            var request = URLRequest(url: requestURL)
            request.httpMethod = HTTPMethod.get.rawValue
            
-           //           request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authoriaztion.rawValue)
+            request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
            
            URLSession.shared.dataTask(with: request) { (data, response, error) in
                
@@ -92,7 +86,7 @@ class PlantController {
                let decoder = JSONDecoder()
                
                do {
-                let plants = try decoder.decode([String: PlantRepresentation].self, from: data).map({ $0.value })
+                let plants = try decoder.decode([PlantRepresentation].self, from: data)
                 self.updatePlantServer(with: plants)
                } catch {
                    NSLog("Error decoding DevLibs: \(error)")
