@@ -21,6 +21,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -38,6 +39,7 @@ class RegisterViewController: UIViewController {
     }
     
     
+    //MARK: FIX ME Controller may not be passed correctly
     
     func signUpUser(with user: UserRepresentation) {
         

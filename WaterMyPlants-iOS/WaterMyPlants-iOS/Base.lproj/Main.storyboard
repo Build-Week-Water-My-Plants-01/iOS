@@ -74,7 +74,6 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
-                                    <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ra1-gE-ucP"/>
                                     <segue destination="GpL-ci-yZj" kind="show" identifier="RegisterSegue" id="vwT-zp-tWY"/>
                                 </connections>
                             </button>
@@ -342,7 +341,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButtonTapped:" destination="GpL-ci-yZj" eventType="touchUpInside" id="OQ5-2Y-GVW"/>
+                                    <action selector="registerButtonTapped:" destination="GpL-ci-yZj" eventType="touchUpInside" id="bW6-vI-V29"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duN-aF-YD4">

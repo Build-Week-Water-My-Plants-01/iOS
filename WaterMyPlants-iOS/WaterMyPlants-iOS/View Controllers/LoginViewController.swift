@@ -46,9 +46,6 @@ class LoginViewController: UIViewController {
     }
     
 
-    @IBAction func registerTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "RegisterSegue", sender: self)
-    }
     
     
     //MARK: Method SignUp + Sign In

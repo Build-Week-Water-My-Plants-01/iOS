@@ -14,7 +14,11 @@ class PlantTableViewCell: UITableViewCell {
     let plantcontroller = PlantController.shared
     
     
-    var plant: Plant?
+    var plant: Plant? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var plantName: UILabel!
@@ -34,6 +38,7 @@ class PlantTableViewCell: UITableViewCell {
         //MARK: - Reset Timer
         
     }
+    
     
     
     func updateViews(){
