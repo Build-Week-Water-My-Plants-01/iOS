@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class PlantDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Outlets
@@ -43,10 +46,13 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     // MARK: - View Lifecycle
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createTapGesture()
         createFrequencyPicker()
+        
         
         saveButton.layer.cornerRadius = 20
         
@@ -101,7 +107,7 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         
         
         //MARK: - Start Coundown Timer
-       // timerCountdownStart()
+      // timerCountdownStart()
         
         
         
@@ -114,24 +120,10 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     
   
+
     
     
-    //MARK: - Schedule Timer Countdown to Water Plant
-    
-    
-    func timerCountdownStart(){
-        let timer = Timer.scheduledTimer(withTimeInterval: 50, repeats: false ) { timer in
-            
-            
-          let alert = UIAlertController(title: "Time to water your plant!", message: "Your plant is dad", preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-          self.present(alert, animated: true)
-            
-    }
-    
-        timer.fire()
-    
-}
+
     
     
     

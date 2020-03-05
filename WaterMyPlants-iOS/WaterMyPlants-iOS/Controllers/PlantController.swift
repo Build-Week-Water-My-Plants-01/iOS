@@ -12,8 +12,12 @@ import CoreData
 
 class PlantController {
     
+    var bearer: Bearer?
+    
     init() {
-        fetchPlantsFromServer()
+        guard let bearer = userController?.bearer else {return}
+        self.bearer = bearer
+        fetchPlantsFromServer(bearer: bearer)
     }
     
     static let shared = PlantController()
@@ -50,14 +54,16 @@ class PlantController {
     //MARK: - Server API Methods
     
 
-    func fetchPlantsFromServer(completion: @escaping () -> Void = { }){
+    func fetchPlantsFromServer(bearer: Bearer, completion: @escaping () -> Void = { }){
+      
+        
+        
+        
+       let identifierString = "\(bearer.id)"
+                 
+       let requestURL = baseURL.appendingPathComponent("api/users/\(identifierString)/plants")
+        
            
-           //           guard let bearer = bearer else {
-           //               completion(.failure(.noToken))
-           //               return
-           //           }
-           
-        let requestURL = baseURL.appendingPathComponent("api/users").appendingPathComponent("plants")
            
            var request = URLRequest(url: requestURL)
            request.httpMethod = HTTPMethod.get.rawValue
@@ -87,7 +93,7 @@ class PlantController {
                
                do {
                 let plants = try decoder.decode([String: PlantRepresentation].self, from: data).map({ $0.value })
-                self.updatePlant(with: plants)
+                self.updatePlantServer(with: plants)
                } catch {
                    NSLog("Error decoding DevLibs: \(error)")
                 completion()
@@ -97,7 +103,7 @@ class PlantController {
            }.resume()
        }
     
-    func updatePlant(with representations: [PlantRepresentation]){
+    func updatePlantServer(with representations: [PlantRepresentation]){
         
         let plantsToFetch = representations.map({ $0.nickname})
            
@@ -130,7 +136,8 @@ class PlantController {
                    
                   plant.nickname = representation.nickname
                   plant.frequency = representation.h2oFrequency
-                   plant.speciesName = representation.speciesName
+                  plant.speciesName = representation.speciesName
+                  plant.image = representation.image
                    
                    //We just updated a Task, we dont need to create a new Task for this identifier
                    plantToCreate.removeValue(forKey: nickname)
@@ -140,7 +147,7 @@ class PlantController {
                for representation in plantToCreate.values {
                    
                    Plant(plantRepresentation: representation, context: context)
-                  // Task(taskRepresentation: representation, context: context)
+                
                }
                
                
@@ -158,7 +165,7 @@ class PlantController {
         //MARK: TODO - Representation implementation + CoreData for Plant And User
     func putPlant(plant: Plant, bearer: Bearer, completion: @escaping ()-> Void = { }) {
           
-       
+        
         
         
           //Core Data needed

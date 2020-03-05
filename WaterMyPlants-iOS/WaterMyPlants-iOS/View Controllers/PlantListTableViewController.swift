@@ -9,10 +9,55 @@
 import UIKit
 import CoreData
 
+
+
+
 class PlantListTableViewController: UITableViewController {
+   
+    
 
     let userController = UserController()
     let plantController = PlantController()
+    
+    
+    @IBAction func waterButtonTapped(_ sender: Any) {
+        timerCountdownStart()
+    }
+    
+    //MARK: - TIMER
+    func timerCountdownStart(){
+            
+           var frequencyCount = 0
+            let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                frequencyCount += 1
+                print(frequencyCount)
+                
+                if frequencyCount == 5 {
+                    self.showAlert()
+                            timer.invalidate()
+                         }
+            }
+        
+          
+            
+            timer.fire()
+        
+    }
+
+    
+    //MARK: - ALERT
+    func showAlert(){
+        
+        
+        
+    let alert = UIAlertController(title: "Time to water your plant!", message: "Your plant is dad", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+        
+    }
+    
+    
+    
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
@@ -54,11 +99,7 @@ class PlantListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+  
     }
 
     // MARK: - Table view data source
