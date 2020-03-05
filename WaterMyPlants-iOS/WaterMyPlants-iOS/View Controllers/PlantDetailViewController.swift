@@ -13,7 +13,7 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     // MARK: - Outlets
     
     let plantController = PlantController()
-    let plant = Plant()
+    
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -25,7 +25,8 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     // MARK: - Properties
     
-    let frequency = ["Everyday",
+    let frequency = ["5.0",
+                     "Everyday",
                      "Every two days",
                      "Every three days",
                      "Once a week"]
@@ -84,7 +85,17 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         createNewPlant(with: plant)
         
         
+        
+        //MARK: - Start Coundown Timer
+        timerCountdownStart()
+        
+        
+        
+        //MARK: - POP to Table View
+        navigationController?.popViewController(animated: true)
+        
     }
+    
     
     
     func createNewPlant(with plant: Plant) {
@@ -92,6 +103,20 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         plantController.putPlant(plant: plant)
         
     }
+    
+    
+    //MARK: - Schedule Timer Countdown to Water Plant
+    
+    
+    
+    
+    func timerCountdownStart(){
+       let timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true, block: updateTimer(timer:))
+    }
+    
+    
+    
+    
     
     /*
      // MARK: - Navigation

@@ -12,6 +12,8 @@ import CoreData
 
 class PlantController {
     
+    static let shared = PlantController()
+    
     let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
     
     //MARK: - Properties
@@ -35,7 +37,7 @@ class PlantController {
     }
     
     
-    
+    var userController: UserController?
     
 
     typealias CompletionHandler = (Error?) -> Void
@@ -97,13 +99,19 @@ class PlantController {
     func putPlant(plant: Plant, completion: @escaping ()-> Void = { }) {
           
           //Core Data needed
+        let identifer = UserController.shared.bearer?.id
+        
+        let identifierString = "\(String(describing: identifer))"
           
-        let requestURL = baseURL.appendingPathComponent("api/users/plants").appendingPathExtension("json")
-              
+        let requestURL = baseURL.appendingPathComponent("api/users/11/plants")
         
           
           var request = URLRequest(url: requestURL)
           request.httpMethod = HTTPMethod.post.rawValue
+        //MARK: - Added 
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearer?.token, forHTTPHeaderField: "Authorization")
+
           
           //Conv. Init needed
         guard let plantRepresentation = plant.plantRepresentation else {

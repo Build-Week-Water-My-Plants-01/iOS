@@ -214,6 +214,9 @@
                                             <state key="normal" title="Water">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="waterButtonPressed:" destination="l9S-WC-k24" eventType="touchUpInside" id="SZw-3S-ULk"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAw-EU-Kcj">
                                             <rect key="frame" x="126" y="46" width="61" height="21"/>
@@ -241,6 +244,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="plantFrequency" destination="DaT-N1-cwx" id="Yww-tO-A08"/>
+                                    <outlet property="plantImage" destination="LWO-DV-sFv" id="aBu-Nj-jXc"/>
+                                    <outlet property="plantName" destination="5ZQ-Al-kYB" id="NJs-yu-TTH"/>
+                                    <outlet property="plantSpecies" destination="rAw-EU-Kcj" id="baT-po-OhI"/>
+                                    <outlet property="waterButton" destination="HcC-Q0-g7p" id="qyL-tJ-ymN"/>
                                     <segue destination="79d-uz-pA3" kind="show" identifier="ViewPlantSegue" id="t9q-eb-FmT"/>
                                 </connections>
                             </tableViewCell>

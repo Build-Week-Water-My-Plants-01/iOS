@@ -15,6 +15,11 @@ class UserController {
         
        let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
     
+      
+       static let shared = UserController()
+    
+    
+    
         //MARK: - Properties
         var bearer: Bearer?
 
@@ -135,6 +140,10 @@ class UserController {
                   let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                   
                   self.bearer = bearer
+                  
+                  
+                
+                  
                   
 //                  KeychainWrapper.standard.set(bearer.token, forKey: "bearer")
 //                  KeychainWrapper.standard.set(user.username, forKey: "username")
