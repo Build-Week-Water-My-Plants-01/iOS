@@ -12,7 +12,15 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     // MARK: - Outlets
     
-    let plantController = PlantController()
+    var plantController: PlantController?
+    var usercontroller: UserController?
+    
+    var dateFormatter: DateFormatter = {
+           let formatter = DateFormatter()
+           formatter.dateFormat = "MMM dd yyyy"
+           formatter.timeZone = TimeZone(secondsFromGMT: 0)
+           return formatter
+       }()
     
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -82,37 +90,44 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         
         let plant = Plant(nickname: nickname, speciesName: species, image: "", frequency: frequency)
         
-        createNewPlant(with: plant)
+        plantController?.putPlant(plant: plant)
         
         
         
         //MARK: - Start Coundown Timer
-        timerCountdownStart()
+       // timerCountdownStart()
         
         
         
         //MARK: - POP to Table View
-        navigationController?.popViewController(animated: true)
+        
+        navigationController?.popToRootViewController(animated: true)
+        
         
     }
     
     
-    
-    func createNewPlant(with plant: Plant) {
-        
-        plantController.putPlant(plant: plant)
-        
-    }
+  
     
     
     //MARK: - Schedule Timer Countdown to Water Plant
     
     
-    
-    
     func timerCountdownStart(){
-       let timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true, block: updateTimer(timer:))
+        let timer = Timer.scheduledTimer(withTimeInterval: 50, repeats: false ) { timer in
+            
+            
+          let alert = UIAlertController(title: "Time to water your plant!", message: "Your plant is dad", preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+          self.present(alert, animated: true)
+            
     }
+    
+        timer.fire()
+    
+}
+    
+    
     
     
     

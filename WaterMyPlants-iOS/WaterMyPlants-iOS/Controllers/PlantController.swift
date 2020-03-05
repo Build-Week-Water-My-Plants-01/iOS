@@ -103,7 +103,7 @@ class PlantController {
         
         let identifierString = "\(String(describing: identifer))"
           
-        let requestURL = baseURL.appendingPathComponent("api/users/11/plants")
+        let requestURL = baseURL.appendingPathComponent("api/users/plants")
         
           
           var request = URLRequest(url: requestURL)
