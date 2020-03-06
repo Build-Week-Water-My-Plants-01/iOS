@@ -61,13 +61,13 @@ class PlantListTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "speciesName", ascending: true)]
     
         
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                              managedObjectContext: context,
-                                             sectionNameKeyPath: "nickname",
+                                             sectionNameKeyPath: "speciesName",
                                              cacheName: nil)
         
         frc.delegate = self

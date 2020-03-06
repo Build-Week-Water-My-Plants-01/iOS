@@ -17,6 +17,7 @@ class PlantTableViewCell: UITableViewCell {
     var plant: Plant? {
         didSet {
             updateViews()
+            waterButton.layer.cornerRadius = 20
         }
     }
     
@@ -25,6 +26,7 @@ class PlantTableViewCell: UITableViewCell {
     @IBOutlet weak var plantSpecies: UILabel!
     @IBOutlet weak var plantFrequency: UILabel!
     
+    @IBOutlet weak var backgroundPlantImage: UIImageView!
     
     @IBOutlet weak var waterButton: UIButton!
     
@@ -50,6 +52,7 @@ class PlantTableViewCell: UITableViewCell {
             plantSpecies.text = plant.speciesName
         //  plantImage.image = plant.image
             plantFrequency.text = plant.frequency
+            
             
                         
         }
