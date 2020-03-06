@@ -19,6 +19,11 @@ class PlantListTableViewController: UITableViewController {
     let userController = UserController()
     let plantController = PlantController()
     
+   
+    @IBAction func unwindToTable(_ sender: UIStoryboardSegue){
+              
+          }
+   
     
     @IBAction func waterButtonTapped(_ sender: Any) {
         timerCountdownStart()
@@ -34,6 +39,8 @@ class PlantListTableViewController: UITableViewController {
                 
                 if frequencyCount == 5 {
                     self.showAlert()
+                   
+                    
                             timer.invalidate()
                          }
             }
@@ -61,13 +68,13 @@ class PlantListTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "speciesName", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
     
         
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                              managedObjectContext: context,
-                                             sectionNameKeyPath: "speciesName",
+                                             sectionNameKeyPath: "nickname",
                                              cacheName: nil)
         
         frc.delegate = self

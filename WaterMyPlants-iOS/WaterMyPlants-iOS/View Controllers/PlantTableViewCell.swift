@@ -12,7 +12,7 @@ class PlantTableViewCell: UITableViewCell {
 
     
     let plantcontroller = PlantController.shared
-    
+   
     
     var plant: Plant? {
         didSet {
@@ -33,11 +33,10 @@ class PlantTableViewCell: UITableViewCell {
     @IBAction func waterButtonPressed(_ sender: Any) {
         
         //MARK: - Change the Opactiy of Button to Grey when watered
+        
+         
         waterButton.backgroundColor = .darkGray
-        
-        
-        
-        //MARK: - Reset Timer
+    
         
     }
     

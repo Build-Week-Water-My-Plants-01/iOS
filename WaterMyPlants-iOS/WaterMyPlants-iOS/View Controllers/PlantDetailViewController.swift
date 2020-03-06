@@ -34,6 +34,11 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    
+    
+    
     // MARK: - Properties
     
     let frequency = ["5.0",
@@ -55,7 +60,7 @@ class PlantDetailViewController: UIViewController, UIImagePickerControllerDelega
         
         
         saveButton.layer.cornerRadius = 20
-        
+        cancelButton.layer.cornerRadius = 20
     }
     
     // MARK: - Tap Gesture Method
