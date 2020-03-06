@@ -92,14 +92,7 @@ class PlantListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
         
-        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-       // fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
-        
-        let context = CoreDataStack.shared.mainContext
-        
-        let results = try? context.fetch(fetchRequest)
-        
-        print(results)
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
