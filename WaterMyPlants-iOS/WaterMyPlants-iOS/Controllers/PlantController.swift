@@ -13,6 +13,13 @@ import CoreData
 class PlantController {
         
     
+    let networkLoader: NetworkDataLoader
+    var error: Error?
+       
+       init(networkLoader: NetworkDataLoader = URLSession.shared) {
+           self.networkLoader = networkLoader
+       }
+    
     
     static let shared = PlantController()
     

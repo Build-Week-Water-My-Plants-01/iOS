@@ -471,7 +471,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rose-2" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-tP-oTz">
-                                <rect key="frame" x="0.0" y="0.0" width="414.00000000000045" height="326"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="326"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="326" id="4Qn-49-v0U"/>
                                     <constraint firstAttribute="width" constant="414" id="wLD-RZ-OEl"/>
