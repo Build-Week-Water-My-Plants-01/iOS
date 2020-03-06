@@ -359,6 +359,10 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpTapped:" destination="GpL-ci-yZj" eventType="touchUpInside" id="p3F-MV-Os2"/>
+                                    <segue destination="A2R-YM-mTN" kind="unwind" unwindAction="unwindToInfo:" id="bju-se-sO8"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Prh-vb-Odf">
                                 <rect key="frame" x="126" y="465" width="246" height="34"/>
@@ -455,6 +459,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAi-gw-N4k" sceneMemberID="firstResponder"/>
+                <exit id="A2R-YM-mTN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1970" y="-652"/>
         </scene>

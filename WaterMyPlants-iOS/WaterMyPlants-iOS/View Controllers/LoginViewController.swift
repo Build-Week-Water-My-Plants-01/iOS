@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
     
 
     
+   
+    
     
     //MARK: Method SignUp + Sign In
     
@@ -65,6 +67,10 @@ class LoginViewController: UIViewController {
             }
         })
     }
+    
+    @IBAction func unwindToInfo(_ sender: UIStoryboardSegue){
+           
+       }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RegisterSegue" {

@@ -36,12 +36,29 @@ class RegisterViewController: UIViewController {
                 let user = UserRepresentation(username: username, password: password, phoneNumber: number)
             
                 signUpUser(with: user)
-               
+        
+                showAlert()
         
     }
     
     
-    //MARK: FIX ME Controller may not be passed correctly
+    //MARK: - Register User Success Message
+    func showAlert(){
+         
+         
+     let alert = UIAlertController(title: "Your account has been registered!", message: "Plase Sign In", preferredStyle: .alert)
+     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+         present(alert, animated: true)
+         
+     }
+    
+    //MARK: - Already Have an Account? Sign Up (button)
+    
+    @IBAction func signUpTapped(_ sender: Any) {
+        
+    }
+    
+    
     
     func signUpUser(with user: UserRepresentation) {
         
