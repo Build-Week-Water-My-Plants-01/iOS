@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var registerButton: UIButton!
     
     var userController: UserController?
     
@@ -21,6 +22,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        registerButton.layer.cornerRadius = 20
         
     }
     
