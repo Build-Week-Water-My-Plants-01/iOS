@@ -16,18 +16,19 @@ extension Plant {
             let speciesName = speciesName,
             let frequency = frequency else { return nil }
         
-        return PlantRepresentation(nickname: nickname, speciesName: speciesName, image: image, h2oFrequency: frequency)
+        return PlantRepresentation(nickname: nickname,
+                                   speciesName: speciesName,
+                                   image: image,
+                                   h2oFrequency: frequency)
     }
     
     @discardableResult convenience init(
-                                        nickname: String,
-
-                                        speciesName: String,
-                                        image: String?,
-                                        frequency: String,
-                                        context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        nickname: String,
+        speciesName: String,
+        image: String?,
+        frequency: String,
+        context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-      
         self.nickname = nickname
         self.speciesName = speciesName
         self.image = image
@@ -36,8 +37,9 @@ extension Plant {
     
     @discardableResult convenience init?(plantRepresentation: PlantRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-            
-        self.init(nickname: plantRepresentation.nickname, speciesName: plantRepresentation.speciesName,
+        
+        self.init(nickname: plantRepresentation.nickname,
+                  speciesName: plantRepresentation.speciesName,
                   image: plantRepresentation.image,
                   frequency: plantRepresentation.h2oFrequency,
                   context: context)

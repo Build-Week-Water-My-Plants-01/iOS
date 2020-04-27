@@ -10,14 +10,12 @@ import Foundation
 
 struct PlantRepresentation: Codable {
     
- 
     let nickname: String
     let speciesName: String
     var image: String?
     let h2oFrequency: String
     
     enum CodingKeys: String, CodingKey {
-     
         case nickname
         case speciesName = "species_name"
         case image

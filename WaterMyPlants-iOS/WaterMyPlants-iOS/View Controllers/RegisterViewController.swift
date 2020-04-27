@@ -34,9 +34,7 @@ class RegisterViewController: UIViewController {
                     !password.isEmpty else{return}
                 
                 let user = UserRepresentation(username: username, password: password, phoneNumber: number)
-            
                 signUpUser(with: user)
-        
                 showAlert()
         
     }
@@ -44,8 +42,6 @@ class RegisterViewController: UIViewController {
     
     //MARK: - Register User Success Message
     func showAlert(){
-         
-         
      let alert = UIAlertController(title: "Your account has been registered!", message: "Plase Sign In", preferredStyle: .alert)
      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
          present(alert, animated: true)
@@ -55,31 +51,15 @@ class RegisterViewController: UIViewController {
     //MARK: - Already Have an Account? Sign Up (button)
     
     @IBAction func signUpTapped(_ sender: Any) {
-        
     }
     
     
     
     func signUpUser(with user: UserRepresentation) {
-        
            userController?.signUp(with: user, completion: { (error) in
-       
                if let error = error {
                    NSLog("Error signing up \(error)")
                }
-               
            })
-           
        }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

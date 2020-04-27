@@ -15,7 +15,9 @@ extension User {
             let phoneNumber = phoneNumber,
             let password = password else { return nil }
         
-        return UserRepresentation(username: username, password: password, phoneNumber: phoneNumber)
+        return UserRepresentation(username: username,
+                                  password: password,
+                                  phoneNumber: phoneNumber)
     }
     
     @discardableResult convenience init(username: String,

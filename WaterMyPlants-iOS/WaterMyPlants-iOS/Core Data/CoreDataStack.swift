@@ -14,7 +14,6 @@ class CoreDataStack {
     static let shared = CoreDataStack()
     
     private init() {}
-    
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Users")
         container.loadPersistentStores { _, error in
@@ -30,7 +29,7 @@ class CoreDataStack {
     var mainContext: NSManagedObjectContext {
         return container.viewContext
     }
-    
+
     func save(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         context.performAndWait {
             do {

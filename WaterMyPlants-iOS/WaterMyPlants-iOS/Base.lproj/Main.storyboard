@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y15-kg-icm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y15-kg-icm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -726,7 +726,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xec-Z8-S7g">
-                                <rect key="frame" x="169" y="442" width="237" height="34"/>
+                                <rect key="frame" x="169" y="443.5" width="237" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="2px-Bj-KWg"/>
                                     <constraint firstAttribute="height" constant="34" id="bqw-qc-IeV"/>
@@ -735,7 +735,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hbh-Mf-zod">
-                                <rect key="frame" x="169" y="390" width="235" height="17"/>
+                                <rect key="frame" x="169" y="390" width="235" height="18.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="235" id="foO-cp-W4O"/>
                                 </constraints>
@@ -757,7 +757,7 @@
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Current Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x9U-ZL-2fk">
-                                <rect key="frame" x="168.5" y="506" width="235.5" height="34"/>
+                                <rect key="frame" x="168.5" y="507.5" width="235.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -776,7 +776,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWd-xl-9FV">
-                                <rect key="frame" x="169" y="594" width="237" height="34"/>
+                                <rect key="frame" x="169" y="595.5" width="237" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="2cQ-UL-ThM"/>
                                     <constraint firstAttribute="height" constant="34" id="5tr-Ci-r92"/>
@@ -845,6 +845,9 @@
             <point key="canvasLocation" x="1011.5942028985507" y="77.678571428571431"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="t9q-eb-FmT"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="6c6a486c-5c68-4bae-b6fe-999ea47a6857_200x200" width="200" height="200"/>
         <image name="Background" width="900" height="1600"/>
@@ -852,9 +855,6 @@
         <image name="Flowers" width="301" height="229"/>
         <image name="Rose-2" width="1629" height="1086"/>
         <image name="WaterPlantLogIn" width="900" height="1600"/>
-        <image name="camera.viewfinder" catalog="system" width="64" height="56"/>
+        <image name="camera.viewfinder" catalog="system" width="128" height="114"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="t9q-eb-FmT"/>
-    </inferredMetricsTieBreakers>
 </document>

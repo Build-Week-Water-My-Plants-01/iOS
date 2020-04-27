@@ -13,15 +13,10 @@ import CoreData
 
 class UserController {
         
+    //MARK: - Properties
        let baseURL = URL(string: "https://water-my-plants-01.herokuapp.com/")!
-    
-      
        static let shared = UserController()
-    
-    
-    
-        //MARK: - Properties
-        var bearer: Bearer?
+       var bearer: Bearer?
 
         enum HTTPMethod: String {
             case get = "GET"
@@ -44,7 +39,8 @@ class UserController {
 
         typealias CompletionHandler = (Error?) -> Void
 
-    func signUp(with user: UserRepresentation, completion: @escaping(NetworkError?)-> Void){
+    func signUp(with user: UserRepresentation,
+                completion: @escaping(NetworkError?)-> Void){
            
            //Build the URL
         let requestURL = baseURL
@@ -70,7 +66,6 @@ class UserController {
                NSLog("Error encoding data: \(error)")
                completion(.encodingError)
                return
-               
            }
            
            URLSession.shared.dataTask(with: request) { ( data, response, error) in
@@ -87,11 +82,9 @@ class UserController {
                 completion(.unknownNetworkError)
                    return
                }
-               
                completion(nil)
            }.resume()
        }
-    
     
     func signIn(with user: UserRepresentation, completion: @escaping(NetworkError?, Bearer?)-> Void){
         
@@ -107,7 +100,6 @@ class UserController {
           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
           
           let encoder = JSONEncoder()
-          
           do {
               request.httpBody = try encoder.encode(user)
           } catch {
@@ -115,46 +107,32 @@ class UserController {
             completion(.encodingError, nil)
               return
           }
-          
           //Perform the request
           URLSession.shared.dataTask(with: request) { (data, response, error) in
-              
               if let response = response as? HTTPURLResponse,
                   response.statusCode != 200 {
                 NSLog("Error code \(response.statusCode)")
                 completion(.unexpectedStatusCode, nil)
                   return
               }
-              
               if let error = error {
                   NSLog("Error fetching data tasks: \(error)")
                 completion(.unknownNetworkError, nil)
                   return
               }
-              
               guard let data = data else {
                 completion(.dataError, nil)
                   return
               }
-              
               do {
                   let bearer = try JSONDecoder().decode(Bearer.self, from: data)
-                  
                   self.bearer = bearer
-                  
-                  
-                
-                  
-                  
 //                  KeychainWrapper.standard.set(bearer.token, forKey: "bearer")
 //                  KeychainWrapper.standard.set(user.username, forKey: "username")
-                  
               } catch {
                 completion(.decodeError, nil)
                   return
-                  
               }
-              
               completion(nil, self.bearer)
           }.resume()
       }
